@@ -5,11 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+#import <Firebase.h>
 #import "AppDelegate.h"
 
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+
 
 @implementation AppDelegate
 
@@ -27,6 +29,9 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
+  }
   return YES;
 }
 

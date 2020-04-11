@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import { Button } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+const SCREEN_WIDTH = Dimensions.get('window').width;
+const SCREEN_HEIGHT = Dimensions.get('window').height;
+
 const styles = StyleSheet.create({
     slide: {
       flex: 1,
@@ -10,8 +13,8 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     },
     image: {
-      width: '90%',
-      height: 640,
+      width: SCREEN_WIDTH - 50,
+      height: SCREEN_HEIGHT / 1.5,
     },
     text: {
       color: 'black',
@@ -41,21 +44,21 @@ const slides = [
     title: 'Screen Yourself',
     text: 'Easily screen yourself at home with easy to fill in forms',
     backgroundColor: '#123962',
-    image: require('../../assets/img/screen.png')
+    image: require('../../../assets/img/screen.png')
   },
   {
     key: "2",
     title: 'Get Alerts',
     text: 'Determine if the place you want to go is high risk',
     backgroundColor: '#799eb2',
-    image: require('../../assets/img/alert.png')
+    image: require('../../../assets/img/alert.png')
   },
   {
     key: "3",
     title: 'Contact Tracing',
     text: 'Easily determine if you\'re at risk of infection',
     backgroundColor: '#f1632a',
-    image: require('../../assets/img/trace.png')
+    image: require('../../../assets/img/trace.png')
   }
 ];
  
@@ -65,7 +68,7 @@ const IntroSlider = ({_onDone}) => {
     return (
       <View style={styles.buttonCircle}>
          <Icon
-          name="md-checkmark"
+          name='check'
           color="green"
           size={24}
         />

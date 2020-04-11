@@ -1,9 +1,8 @@
 import React from 'react';
-import { Platform, StyleSheet, AsyncStorage } from 'react-native';
-
-import firebase from '@react-native-firebase/app';
+import { Platform, AsyncStorage } from 'react-native';
 import AppRoutes from './src/Routes';
-import IntroSlider from './src/screens/Intro';
+import IntroSlider from './src/screens/intro/Intro';
+import UserProvider from './src/utils/User';
 
 
 const instructions = Platform.select({
@@ -34,11 +33,10 @@ const App = () => {
   }, []);
 
 
-  if(firstLaunch) {
-    return <IntroSlider _onDone={() => setFirstLaunch(false)} />
-  }
-  return <AppRoutes/>;
-
+  return <UserProvider>
+    {firstLaunch ? <IntroSlider _onDone={() => setFirstLaunch(false)} />: <AppRoutes/>}
+  </UserProvider>
+ 
 };
 
 export default App;

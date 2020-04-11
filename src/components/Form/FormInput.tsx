@@ -23,14 +23,13 @@ const styles = StyleSheet.create({
       color: '#F44336',
     }
   });
-export const FormInput = ({ icon, refInput, ...otherProps }) => {
+export const FormInput = ({ icon, ...otherProps }) => {
     return (
       <Input
         {...otherProps}
-        ref={refInput}
         inputContainerStyle={styles.inputContainer}
         leftIcon={
-          <Icon name={icon} type={'simple-line-icon'} color="#7384B4" size={18} />
+          icon && <Icon name={icon} type={'simple-line-icon'} color="#7384B4" size={18} />
         }
         inputStyle={styles.inputStyle}
         autoFocus={false}

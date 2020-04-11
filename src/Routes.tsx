@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { Text } from "react-native";
-
+import SignIn from "./screens/auth/SignIn";
+import Home from "./screens/Home";
+import auth, { FirebaseAuthTypes } from "@react-native-firebase/auth"
 const Stack = createStackNavigator();
 
-const HomeScreen = () =>  <Text>Home</Text>
+const AppRoutes = () => {
 
-const AppRoutes = () => (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="SignIn">
-        <Stack.Screen name="SignIn" component={HomeScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
-)
+  const [user, setUser] = React.useState<FirebaseAuthTypes.User>();
+  React.useEffect(() => {
+    const sub = auth().onAuthStateChanged(userAuth => {
+        setUser(userAuth);
+      });
+    return sub;
+}, []);
+
+  return <NavigationContainer>
+    <Stack.Navigator>
+      {!user ?
+        <Stack.Screen name="Sign In" component={SignIn} options={{ headerShown: false }} />
+      : <Stack.Screen name="Home" component={Home} /> 
+      }
+    </Stack.Navigator>
+  </NavigationContainer>
+}
 
 export default AppRoutes;
