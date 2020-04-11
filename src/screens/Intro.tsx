@@ -41,21 +41,21 @@ const slides = [
     title: 'Screen Yourself',
     text: 'Easily screen yourself at home with easy to fill in forms',
     backgroundColor: '#123962',
-    image: require('../assets/img/screen.png')
+    image: require('../../assets/img/screen.png')
   },
   {
     key: "2",
     title: 'Get Alerts',
     text: 'Determine if the place you want to go is high risk',
     backgroundColor: '#799eb2',
-    image: require('../assets/img/alert.png')
+    image: require('../../assets/img/alert.png')
   },
   {
     key: "3",
     title: 'Contact Tracing',
     text: 'Easily determine if you\'re at risk of infection',
     backgroundColor: '#f1632a',
-    image: require('../assets/img/trace.png')
+    image: require('../../assets/img/trace.png')
   }
 ];
  
